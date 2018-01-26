@@ -8,9 +8,15 @@
 </head>
 
 <body>
-    <h1>This is the Headless Wordpress test page</h1>
+    <h1>This is the Headless Wordpress test page, version 1</h1>
 </body>
 
 </html>
 <link rel="stylesheet" href="">
-<script src=""></script>
+<script>
+    function receiveData(data) {
+        console.log(data);
+        console.dir(data);
+    }
+</script>
+<script src="http://www.digitalhost.me/solum/wp-json/wp/v2/plot/?_jsonp=receiveData"></script>
