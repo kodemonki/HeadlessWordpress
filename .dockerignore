@@ -2,4 +2,3 @@ Dockerfile
 README.md
 docker-compose.yml
 todo.txt
-update.sh
