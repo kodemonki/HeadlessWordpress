@@ -39,3 +39,8 @@ Thumbs.db
 # Project specific   #
 ######################
 archive/
+node_modules/
+wp-content/themes/gazprom/css
+wp-content/themes/gazprom/images
+wp-content/themes/gazprom/js
+wp-content/themes/gazprom/php
