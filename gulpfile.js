@@ -5,11 +5,12 @@
 var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    minifyCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
     autoprefixer = require('gulp-autoprefixer'),
     cleanhtml = require('gulp-cleanhtml'),
     gulpSequence = require('gulp-sequence'),
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
     config = require("./package.json");
 
 ////////////////////////////////////////////////////
@@ -46,14 +47,16 @@ gulp.task('imageminjpg', function () {
 // autoprefixing and minification
 ////////////////////////////////////////////////////
 
-gulp.task('css', function () {
-    return gulp.src(config.source + '/*.css')
+gulp.task('sass', function () {
+    return gulp.src(config.source + '/sass/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest('./' + config.destination));
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.destination + '/css'));
 });
 
 gulp.task('cleanhtml', function () {
@@ -88,7 +91,11 @@ gulp.task('build', function (callback) {
 gulp.task('deploy', function (callback) {
     gulpSequence('css', 'imageminpng', 'imageminjpg', 'cleanhtml', 'compressjs')(callback);
 });
-
+/*
 gulp.task('default', function (callback) {
     gulpSequence('build', 'watch')(callback);
+});
+*/
+gulp.task('default', function (callback) {
+    gulpSequence('sass')(callback);
 });
