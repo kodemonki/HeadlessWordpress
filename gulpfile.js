@@ -7,7 +7,6 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     uglify = require('gulp-uglify'),
     autoprefixer = require('gulp-autoprefixer'),
-    cleanhtml = require('gulp-cleanhtml'),
     gulpSequence = require('gulp-sequence'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -18,7 +17,7 @@ var gulp = require('gulp'),
 ////////////////////////////////////////////////////
 
 gulp.task('imageminpng', function () {
-    return gulp.src('./' + config.source + '/*.png')
+    return gulp.src(config.source + '/images/**/*.png')
         .pipe(imagemin({
             optimisationLevel: 7,
             progressive: true,
@@ -27,11 +26,11 @@ gulp.task('imageminpng', function () {
             }],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest('./' + config.destination));
+        .pipe(gulp.dest(config.destination + '/images'));
 });
 
 gulp.task('imageminjpg', function () {
-    return gulp.src('./' + config.source + '/*.jpg')
+    return gulp.src(config.source + '/images/**/*.jpg')
         .pipe(imagemin({
             optimisationLevel: 7,
             progressive: true,
@@ -40,11 +39,11 @@ gulp.task('imageminjpg', function () {
             }],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest('./' + config.destination));
+        .pipe(gulp.dest(config.destination + '/images'));
 });
 
 ////////////////////////////////////////////////////
-// autoprefixing and minification
+// css tasks
 ////////////////////////////////////////////////////
 
 gulp.task('sass', function () {
@@ -59,16 +58,25 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(config.destination + '/css'));
 });
 
-gulp.task('cleanhtml', function () {
-    return gulp.src(config.source + '/index.html')
-        .pipe(cleanhtml())
-        .pipe(gulp.dest('./' + config.destination + '/'));
+////////////////////////////////////////////////////
+// copy tasks
+////////////////////////////////////////////////////
+
+gulp.task('copyphp', function () {
+    gulp.src(config.source + '/*.php')
+        .pipe(gulp.dest(config.destination + '/'));
+    gulp.src(config.source + '/php/*.php')
+        .pipe(gulp.dest(config.destination + '/php/'));
 });
 
+////////////////////////////////////////////////////
+// js tasks
+////////////////////////////////////////////////////
+
 gulp.task('compressjs', function () {
-    return gulp.src(config.source + '/*.js')
+    return gulp.src(config.source + '/js/**/*.js')
         .pipe(uglify())
-        .pipe(gulp.dest('./' + config.destination + '/'));
+        .pipe(gulp.dest(config.destination + '/js/'));
 });
 
 ////////////////////////////////////////////////////
@@ -76,7 +84,7 @@ gulp.task('compressjs', function () {
 ////////////////////////////////////////////////////
 
 gulp.task('watch', function () {
-    gulp.watch("src/**/*", ['build']);
+    gulp.watch(config.source + "/**/*", ['build']);
 });
 
 
@@ -97,5 +105,5 @@ gulp.task('default', function (callback) {
 });
 */
 gulp.task('default', function (callback) {
-    gulpSequence('sass')(callback);
+    gulpSequence('sass', 'copyphp', 'compressjs', 'imageminpng', 'imageminjpg')(callback);
 });
