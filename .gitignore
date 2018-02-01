@@ -23,8 +23,8 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
-*.sqlite
+#*.sql
+#*.sqlite
 
 # OS generated files #
 ######################
@@ -40,9 +40,3 @@ Thumbs.db
 ######################
 archive/
 node_modules/
-wp-content/themes/gazprom/index.php
-wp-content/themes/gazprom/functions.php
-wp-content/themes/gazprom/css
-wp-content/themes/gazprom/images
-wp-content/themes/gazprom/js
-wp-content/themes/gazprom/php
