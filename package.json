@@ -6,7 +6,7 @@
   "source": "./source",
   "destination": "./html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
   "author": "Tom.Jane@BradleyDyer.com",
   "license": "ISC",
@@ -15,7 +15,6 @@
     "gulp-autoprefixer": "^2.3.1",
     "gulp-imagemin": "^2.4.0",
     "gulp-sass": "^3.1.0",
-    "gulp-sass-glob": "^1.0.8",
     "gulp-sequence": "^0.4.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^1.2.0",
