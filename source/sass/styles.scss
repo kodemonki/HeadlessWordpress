@@ -1,8 +1,30 @@
-body {
-    background-color: red;
+$heading-background-color: lightgray;
+$body-background-color: lightcyan;
 
-    h1 {
-        color: purple;
-        user-select: none;
+.text-center {
+    text-align: center;
+}
+
+.full-width {
+    width:100%;
+}
+
+body {
+    background-color: $body-background-color;
+}
+
+.header {
+    &__background {
+        &--default {
+            background: $heading-background-color;            
+        }
+    }
+}
+
+.footer {
+    &__background {
+        &--default {
+            background: $heading-background-color;            
+        }
     }
 }

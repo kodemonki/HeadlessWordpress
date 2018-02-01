@@ -12,16 +12,42 @@
         <link rel="stylesheet" href="/wp-content/themes/gazprom/css/styles.css">
     </head>
 
+<<<<<<< HEAD
 <body>
     <!-- the element which will hold the pages list -->
 
     <h2>Php</h2>
     <div id="pages-list-php">
         <?php
-        
-        $dataObj = Url2Obj('http://localhost:80/wp-json/wp/v2/pages/2/');
-        
+=======
+    <body>
 
+        <?php include $baseurl.'header.php'; ?>
+        <?php include $baseurl.'navigation.php'; ?>
+
+        <div class="container">
+            <div class="row">
+                <h2>Php</h2>
+                <div id="pages-list-php">
+                    <?php
+                        $dataObj = Url2Obj('http://localhost:80/wp-json/wp/v2/pages/2/');        
+                        echo '<h1>'.($dataObj['title']['rendered']).'</h1><p>'.($dataObj['content']['rendered']).'</p>';
+                    ?>
+                </div>
+
+                <h2>Javascript</h2>
+                <div id="pages-list"></div>
+                
+            </div>
+        </div>
+>>>>>>> parent of 4999106... sdgfsdfg
+        
+        <?php include $baseurl.'footer.php'; ?>
+        
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 4999106... sdgfsdfg
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <!-- Tether -->
@@ -40,6 +66,7 @@
     </body>
 
     </html>
+<<<<<<< HEAD
 
         echo '<h1>'.($dataObj['title']['rendered']).'</h1><p>'.($dataObj['content']['rendered']).'</p>';   
                         
@@ -66,3 +93,5 @@
 
 </html>
 
+=======
+>>>>>>> parent of 4999106... sdgfsdfg
