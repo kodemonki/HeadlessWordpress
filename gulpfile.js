@@ -5,11 +5,11 @@
 var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    uglify = require('gulp-uglify'),
     autoprefixer = require('gulp-autoprefixer'),
     gulpSequence = require('gulp-sequence'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
+    sassGlob = require('gulp-sass-glob'),
     config = require("./package.json");
 
 ////////////////////////////////////////////////////
@@ -48,6 +48,7 @@ gulp.task('imageminjpg', function () {
 
 gulp.task('sass', function () {
     return gulp.src(config.source + '/sass/**/*.scss')
+        .pipe(sassGlob())
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
@@ -75,7 +76,6 @@ gulp.task('copyphp', function () {
 
 gulp.task('compressjs', function () {
     return gulp.src(config.source + '/js/**/*.js')
-        .pipe(uglify())
         .pipe(gulp.dest(config.destination + '/js/'));
 });
 
@@ -84,26 +84,21 @@ gulp.task('compressjs', function () {
 ////////////////////////////////////////////////////
 
 gulp.task('watch', function () {
-    gulp.watch(config.source + "/**/*", ['build']);
+    gulp.watch(config.source + "/**/*", ['watchbuild']);
 });
-
 
 ////////////////////////////////////////////////////
 // run tasks
 ////////////////////////////////////////////////////
 
-gulp.task('build', function (callback) {
-    gulpSequence('css', 'imageminpng', 'imageminjpg')(callback);
+gulp.task('watchbuild', function (callback) {
+    gulpSequence('sass', 'copyphp', 'compressjs')(callback);
 });
 
-gulp.task('deploy', function (callback) {
-    gulpSequence('css', 'imageminpng', 'imageminjpg', 'cleanhtml', 'compressjs')(callback);
+gulp.task('build', function (callback) {
+    gulpSequence('sass', 'copyphp', 'compressjs', 'imageminpng', 'imageminjpg')(callback);
 });
-/*
+
 gulp.task('default', function (callback) {
     gulpSequence('build', 'watch')(callback);
-});
-*/
-gulp.task('default', function (callback) {
-    gulpSequence('sass', 'copyphp', 'compressjs', 'imageminpng', 'imageminjpg')(callback);
 });
