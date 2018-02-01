@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
     $baseurl = 'php/';
     include $baseurl.'functions.php';
@@ -23,6 +24,16 @@
 </head>
 >>>>>>> parent of f834724... added sass glob
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WP Headless CMS</title>
+</head>
+
+>>>>>>> parent of f834724... added sass glob
 <body>
     <!-- the element which will hold the pages list -->
 
@@ -32,6 +43,7 @@
         
         $dataObj = Url2Obj('http://localhost:80/wp-json/wp/v2/pages/2/');
         
+<<<<<<< HEAD
 <<<<<<< HEAD
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -52,6 +64,8 @@
 
     </html>
 =======
+=======
+>>>>>>> parent of f834724... added sass glob
         echo '<h1>'.($dataObj['title']['rendered']).'</h1><p>'.($dataObj['content']['rendered']).'</p>';   
                         
         ?>
@@ -76,4 +90,7 @@
 </body>
 
 </html>
+<<<<<<< HEAD
+>>>>>>> parent of f834724... added sass glob
+=======
 >>>>>>> parent of f834724... added sass glob
