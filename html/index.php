@@ -1,56 +1,17 @@
 <?php
-    $baseurl = 'php/';
-    include $baseurl.'functions.php';
-?>
-    <!DOCTYPE html>
-    <html lang="en">
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
 
-    <head>
-        <meta charset="UTF-8">
-        <title>WP Headless CMS</title>
-        <!-- Bootstrap 4 -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <link rel="stylesheet" href="/wp-content/themes/gazprom/css/styles.css">
-    </head>
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define('WP_USE_THEMES', true);
 
-    <body>
-
-        <?php include $baseurl.'header.php'; ?>
-        <?php include $baseurl.'navigation.php'; ?>
-
-        <div class="container">
-            <div class="row">
-                <h2>Php</h2>
-                <div id="pages-list-php">
-                    <?php
-                        $dataObj = Url2Obj('http://localhost:80/wp-json/wp/v2/pages/2/');        
-                        echo '<h1>'.($dataObj['title']['rendered']).'</h1><p>'.($dataObj['content']['rendered']).'</p>';
-                    ?>
-                </div>
-
-                <h2>Javascript</h2>
-                <div id="pages-list"></div>
-                
-            </div>
-        </div>
-        
-        <?php include $baseurl.'footer.php'; ?>
-        
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-        <!-- Tether -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-        <!-- Bootstrap 4 -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <!-- fetch polyfill -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" charset="utf-8"></script>
-        <!-- project json -->
-        <script src="/wp-content/themes/gazprom/js/script.js"></script>
-
-        <script type="text/javascript">
-            getSamplePage();
-        </script>
-
-    </body>
-
-    </html>
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp-blog-header.php' );
