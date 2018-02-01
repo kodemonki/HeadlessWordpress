@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <body>
     <!-- the element which will hold the pages list -->
+<<<<<<< HEAD
 
     <h2>Php</h2>
     <div id="pages-list-php">
@@ -23,18 +24,36 @@
 
     </div>
     <h2>Javascript</h2>
+=======
+>>>>>>> parent of 2d52785... blank theme
     <div id="pages-list"></div>
+
     <!-- load the polyfill -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" charset="utf-8"></script>
 
     <script type="text/javascript">
         const pagesContainer = document.getElementById('pages-list')
+<<<<<<< HEAD
         fetch('http://localhost:8000/wp-json/wp/v2/pages/2/')
             .then(r => r.json())
             .then(page => {
                 const pageDiv = document.createElement('div');
                 pageDiv.innerHTML = '<h1>' + page.title.rendered + '</h1><p>' + page.content.rendered + '</p>';
                 pagesContainer.appendChild(pageDiv);
+=======
+        // fetch all pages
+        // here I'm using port 8888 on localhost, but your URL might of course be different
+        fetch('http://localhost:8000/wp-json/wp/v2/pages/')
+            // get the response as JSON
+            .then(r => r.json())
+            // go through the pages and append each pages' title to the HTML element
+            .then(pages => {
+                pages.map(page => {
+                    const pageDiv = document.createElement('div')
+                    pageDiv.innerHTML = '<h1>' + page.title.rendered + '</h1><p>' + page.content.rendered + '</p>';
+                    pagesContainer.appendChild(pageDiv)
+                })
+>>>>>>> parent of 2d52785... blank theme
             })
 =======
 <body <?php body_class(); ?>>
