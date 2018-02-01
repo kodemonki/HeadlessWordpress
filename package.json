@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.php",
   "source": "./source",
-  "destination": "./wp-content/themes/gazprom",
+  "destination": "./html/v1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

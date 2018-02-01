@@ -63,11 +63,16 @@ gulp.task('sass', function () {
 // copy tasks
 ////////////////////////////////////////////////////
 
-gulp.task('copyphp', function () {
+gulp.task('copyfiles', function () {
+    //copy root index.php
     gulp.src(config.source + '/*.php')
         .pipe(gulp.dest(config.destination + '/'));
+    //copy template php
     gulp.src(config.source + '/php/*.php')
         .pipe(gulp.dest(config.destination + '/php/'));
+    //copy theme files
+    gulp.src(config.source + '/theme/*.*')
+        .pipe(gulp.dest(config.destination + '/wp-content/themes/gazprom/'));
 });
 
 ////////////////////////////////////////////////////
@@ -92,13 +97,17 @@ gulp.task('watch', function () {
 ////////////////////////////////////////////////////
 
 gulp.task('watchbuild', function (callback) {
-    gulpSequence('sass', 'copyphp', 'compressjs')(callback);
+    gulpSequence('sass', 'copyfiles', 'compressjs')(callback);
 });
 
 gulp.task('build', function (callback) {
-    gulpSequence('sass', 'copyphp', 'compressjs', 'imageminpng', 'imageminjpg')(callback);
+    gulpSequence('sass', 'copyfiles', 'compressjs', 'imageminpng', 'imageminjpg')(callback);
+});
+
+gulp.task('watcher', function (callback) {
+    gulpSequence('build', 'watch')(callback);
 });
 
 gulp.task('default', function (callback) {
-    gulpSequence('build', 'watch')(callback);
+    gulpSequence('build')(callback);
 });
