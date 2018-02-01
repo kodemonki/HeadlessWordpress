@@ -1,5 +1,6 @@
 $heading-background-color: lightgray;
 $body-background-color: lightcyan;
+$navigation-background-color: lightgreen;
 
 .text-center {
     text-align: center;
@@ -25,6 +26,14 @@ body {
     &__background {
         &--default {
             background: $heading-background-color;            
+        }
+    }
+}
+
+.navigation {
+    &__item {
+        &--default {
+            background: $navigation-background-color;
         }
     }
 }
