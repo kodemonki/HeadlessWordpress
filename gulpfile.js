@@ -72,7 +72,7 @@ gulp.task('copyfiles', function () {
         .pipe(gulp.dest(config.destination + '/php/'));
     //copy theme files
     gulp.src(config.source + '/theme/*.*')
-        .pipe(gulp.dest(config.destination + '/wp-content/themes/gazprom/'));
+        .pipe(gulp.dest('./html/wp-content/themes/gazprom/'));
 });
 
 ////////////////////////////////////////////////////
