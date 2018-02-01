@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*jslint devel: true, browser: true, unparam: true, debug: false, es5: true, white: true, maxerr: 50, indent: 4 */
 "use strict";
 console.log('script.js loaded');
@@ -13,6 +12,3 @@ function getSamplePage() {
             pagesContainer.appendChild(pageDiv);
         })
 }
-=======
-console.log('script.js loaded');
->>>>>>> parent of f834724... added sass glob
