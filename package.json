@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.php",
   "source": "./source",
-  "destination": "./html",
+  "destination": "./wp-content/themes/gazprom",
   "scripts": {
     "test": "test"
   },

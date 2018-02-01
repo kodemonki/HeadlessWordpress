@@ -1,6 +1,5 @@
 <?php
-    $baseurl = 'php/';
-    include $baseurl.'functions.php';
+    $baseurl = 'wp-content/themes/gazprom/php/';
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -10,7 +9,7 @@
         <title>WP Headless CMS</title>
         <!-- Bootstrap 4 -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/wp-content/themes/gazprom/css/styles.css">
     </head>
 
 <body>
@@ -32,7 +31,7 @@
         <!-- fetch polyfill -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" charset="utf-8"></script>
         <!-- project json -->
-        <script src="/js/script.js"></script>
+        <script src="/wp-content/themes/gazprom/js/script.js"></script>
 
         <script type="text/javascript">
             getSamplePage();
