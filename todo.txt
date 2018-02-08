@@ -1,5 +1,0 @@
-+ make test project
-- import it into wordpress
-- create blank theme
-- setup jenkins
-
