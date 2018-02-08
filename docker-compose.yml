@@ -4,7 +4,7 @@ services:
     db:
         image: mysql:5.7 # pulling image from DockerHub
         volumes:
-            - db_data:/var/lib/mysql
+            - db_data:/var/lib/mysql # mount
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: somewordpress
@@ -17,7 +17,7 @@ services:
             - db
         image: wordpress:latest # pulling image from DockerHub
         volumes:
-            - ./wordpress:/var/www/html/wp-content
+            - ./wordpress:/var/www/html/wp-content # mount
         ports:
             - 8001:80 # host:container
         restart: always
@@ -34,6 +34,7 @@ services:
             - ./website:/var/www/html # mount
         ports:
             - 8000:80  # host:container
+        restart: always
 
 volumes:
     db_data:
